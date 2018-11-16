@@ -6,9 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.bumptech.glide.Glide;
 import com.leo.myactivityoptions.localdemo.bean.LocalBean;
+import com.leo.myactivityoptions.utils.UIUtil;
 
 import java.util.ArrayList;
 
@@ -58,6 +60,8 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
         String item = dataList.get(position);
         VH vhHolder = (VH) holder;
+        RelativeLayout.LayoutParams reParams = (RelativeLayout.LayoutParams) vhHolder.imageView.getLayoutParams();
+        reParams.height = (UIUtil.getWidth(context) - UIUtil.dip2px(context, 30)) / 3;
         Glide.with(context)
                 .load(item)
                 .asBitmap()

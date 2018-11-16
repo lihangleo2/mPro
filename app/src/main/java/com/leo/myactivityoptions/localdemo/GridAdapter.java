@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.leo.myactivityoptions.R;
 import com.leo.myactivityoptions.localdemo.bean.LocalBean;
+import com.leo.myactivityoptions.utils.UIUtil;
 
 import java.util.ArrayList;
 
@@ -62,6 +63,8 @@ public class GridAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
         LocalBean item = dataList.get(position);
         VH vhHolder = (VH) holder;
+        RelativeLayout.LayoutParams reParams = (RelativeLayout.LayoutParams) vhHolder.imageView.getLayoutParams();
+        reParams.height = (UIUtil.getWidth(context) - UIUtil.dip2px(context, 30)) / 3;
         Glide.with(context)
                 .load(item.getMipmap())
                 .asBitmap()
