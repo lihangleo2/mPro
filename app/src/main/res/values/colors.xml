@@ -3,4 +3,12 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="translate_88">#88000000</color>
+    <color name="white">#ffffff</color>
+    <color name="solink_background">#1b1c20</color>
+    <color name="mine_color">#855a20</color>
+    <color name="solink_light">#26272d</color>
+    <color name="transparent90_white">#E5ffffff</color>
+    <color name="transparent">#00000000</color>
+
 </resources>

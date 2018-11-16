@@ -1,23 +1,19 @@
-package com.leo.myactivityoptions;
+package com.leo.myactivityoptions.localdemo;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.SharedElementCallback;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 
+import com.leo.myactivityoptions.Comment;
+import com.leo.myactivityoptions.R;
 import com.leo.myactivityoptions.localdemo.bean.CanScrollBean;
 
 import org.greenrobot.eventbus.EventBus;
@@ -25,13 +21,13 @@ import org.greenrobot.eventbus.EventBus;
 import java.util.List;
 import java.util.Map;
 
-import static com.leo.myactivityoptions.Comment.urls;
+import static com.leo.myactivityoptions.Comment.mipmaps;
 
 /**
  * Created by Administrator on 2018/4/17.
  */
 
-public class SecondActivity extends AppCompatActivity {
+public class LocalSecondActivity extends AppCompatActivity {
 
     private ViewPager mPager;
     private int index;
@@ -40,7 +36,7 @@ public class SecondActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_second);
+        setContentView(R.layout.activity_second_local);
         mPager = (ViewPager) findViewById(R.id.pager);
         index = (int) getIntent().getExtras().get("index");
         supportPostponeEnterTransition();//延缓执行 然后在fragment里面的控件加载完成后start
@@ -56,14 +52,13 @@ public class SecondActivity extends AppCompatActivity {
             setEnterSharedElementCallback(new SharedElementCallback() {
                 @Override
                 public void onMapSharedElements(List<String> names, Map<String, View> sharedElements) {
-                    String url = urls.get(mPager.getCurrentItem());
-                    LargePicFragment fragment = (LargePicFragment) adapter.instantiateItem(mPager, mPager.getCurrentItem());
+                    String url = mipmaps.get(mPager.getCurrentItem()).getTag();
+                    LocalLargePicFragment fragment = (LocalLargePicFragment) adapter.instantiateItem(mPager, mPager.getCurrentItem());
                     sharedElements.clear();
                     sharedElements.put(url, fragment.getSharedElement());
                 }
             });
         }
-
 
         mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -113,12 +108,12 @@ public class SecondActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return Comment.urls.size();
+            return Comment.mipmaps.size();
         }
 
         @Override
         public Fragment getItem(int position) {
-            return LargePicFragment.newFragment(
+            return LocalLargePicFragment.newFragment(
                     position);
         }
 

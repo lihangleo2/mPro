@@ -2,6 +2,8 @@ package com.leo.myactivityoptions;
 
 import android.graphics.Bitmap;
 
+import com.leo.myactivityoptions.localdemo.bean.LocalBean;
+
 import java.util.ArrayList;
 
 /**
@@ -11,4 +13,5 @@ import java.util.ArrayList;
 public class Comment {
     public static Bitmap bitmap;
     public static ArrayList<String> urls;
+    public static ArrayList<LocalBean> mipmaps;
 }

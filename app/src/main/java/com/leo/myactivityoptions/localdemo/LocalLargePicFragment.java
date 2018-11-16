@@ -1,13 +1,11 @@
-package com.leo.myactivityoptions;
+package com.leo.myactivityoptions.localdemo;
 
 import android.annotation.TargetApi;
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,29 +13,23 @@ import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
-import com.leo.myactivityoptions.utils.CircleProgressView;
-import com.leo.myactivityoptions.utils.ProgressInterceptor;
-import com.leo.myactivityoptions.utils.ProgressListener;
+import com.leo.myactivityoptions.R;
+import com.leo.myactivityoptions.SecondActivity;
 
-import static com.leo.myactivityoptions.Comment.urls;
+import static com.leo.myactivityoptions.Comment.mipmaps;
 
 /**
  * Created by Mr_Wrong on 15/10/6.
  */
-public class LargePicFragment extends Fragment {
-    private SecondActivity activity;
+public class LocalLargePicFragment extends Fragment {
+    private LocalSecondActivity activity;
     private int index;
     private ImageView image;
-    CircleProgressView progressView;//进度条
 
     public static Fragment newFragment(int index) {
         Bundle bundle = new Bundle();
         bundle.putInt("index", index);
-        LargePicFragment fragment = new LargePicFragment();
+        LocalLargePicFragment fragment = new LocalLargePicFragment();
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -45,7 +37,7 @@ public class LargePicFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        this.activity = (SecondActivity) context;
+        this.activity = (LocalSecondActivity) context;
 
     }
 
@@ -61,7 +53,6 @@ public class LargePicFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_viewer, container, false);
         image = view.findViewById(R.id.image);
-        progressView = view.findViewById(R.id.progressView);
 
         image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,7 +62,7 @@ public class LargePicFragment extends Fragment {
         });
 
 
-        view.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+        image.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
             @Override
             public boolean onPreDraw() {
                 image.getViewTreeObserver().removeOnPreDrawListener(this);
@@ -85,36 +76,11 @@ public class LargePicFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-
-
-        ProgressInterceptor.addListener(urls.get(index), new ProgressListener() {
-            @Override
-            public void onProgress(int progress) {
-                progressView.setProgress(progress);
-            }
-        });
-
         Glide.with(activity)
-                .load(urls.get(index))
+                .load(mipmaps.get(index).getMipmap())
+                .asBitmap()
                 .dontAnimate()
-                .into(new GlideDrawableImageViewTarget(image) {
-                    @Override
-                    public void onLoadStarted(Drawable placeholder) {
-                        super.onLoadStarted(placeholder);
-                        progressView.setVisibility(View.VISIBLE);
-                    }
-
-                    @Override
-                    public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> animation) {
-                        super.onResourceReady(resource, animation);
-
-                        progressView.setVisibility(View.GONE);
-                        ProgressInterceptor.removeListener(urls.get(index));
-
-                    }
-                });
-
-
+                .into(image);
     }
 
     public View getSharedElement() {

@@ -8,4 +8,21 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+    <!--设置-全屏-->
+    <style name="TransAppThemeBlack" parent="AppTheme.Base">
+        <item name="android:windowContentTransitions">true</item>
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/solink_background</item>  <!-- 状态栏 -->
+        <item name="colorAccent">@color/mine_color</item>  <!-- 重点,指的的是手指按下系统空间等显示的颜色 -->
+        <item name="android:windowBackground">@color/translate_88</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <!--<item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>-->
+    </style>
+
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
 </resources>
