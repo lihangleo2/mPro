@@ -11,7 +11,7 @@
 #### 项目演示
 |滑动改变item|滑动到列表不可见，列表下滑|
 |:---:|:---:|
-|![](https://github.com/lihangleo2/mPro/blob/master/updateGif1.gif)|![](https://github.com/lihangleo2/mPro/blob/master/updateGif2.gif)|
+|![](https://github.com/lihangleo2/mPro/blob/master/smallupdateGif1.gif)|![](https://github.com/lihangleo2/mPro/blob/master/smallupdateGif2.gif)|
 
 
 
