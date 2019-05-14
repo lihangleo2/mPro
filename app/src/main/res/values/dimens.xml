@@ -3,6 +3,7 @@
 
     <dimen name="space_5">5dp</dimen>
     <dimen name="space_10">10dp</dimen>
-
+    <dimen name="divide">2dp</dimen>
+    <dimen name="divide_all">16dp</dimen>
 
 </resources>

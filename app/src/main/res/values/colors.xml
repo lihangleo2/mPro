@@ -10,5 +10,5 @@
     <color name="solink_light">#26272d</color>
     <color name="transparent90_white">#E5ffffff</color>
     <color name="transparent">#00000000</color>
-
+    <color name="status_color">#617de9</color>
 </resources>
