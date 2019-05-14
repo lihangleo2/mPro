@@ -41,6 +41,12 @@
             android:name=".SecondActivity"
             android:screenOrientation="portrait"
             />
+
+        <activity
+            android:name=".likewx.LikeWxActivity"
+            android:theme="@style/NoTitleFullscreen"
+            android:screenOrientation="portrait"
+            />
     </application>
 
 
