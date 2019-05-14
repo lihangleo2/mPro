@@ -66,6 +66,7 @@ public class ReAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         DisplayOptions displayOptions = new DisplayOptions();
         displayOptions.setLoadingImage(R.mipmap.ic_launcher_leo);
         displayOptions.setErrorImage(R.mipmap.image_error);
+        holder1.srcImageView.setShowGifFlagEnabled(R.mipmap.ic_gif);
         Sketch.with(context).display(itemUrl, holder1.srcImageView)
                 .options(displayOptions)
                 .commit();
