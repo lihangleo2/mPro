@@ -74,6 +74,12 @@ public class LikeWxActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mImmersionBar.destroy();
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.srcImageView:
